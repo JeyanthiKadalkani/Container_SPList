@@ -1,0 +1,213 @@
+
+<!--The content below is only a placeholder and can be replaced.-->
+<div id="imgRolling" class="imgAlign" *ngIf="!imgHide">
+  <img src="https://worldbankgroup.sharepoint.com/_layouts/15/images/gears_anv4.gif?rev=44">
+</div>
+
+<a id="printVersionLink" class="staffPrint" (click)="OpenPrintVersion()">Print Version</a>
+<br />
+<table class="staffDirectory">
+  <tbody>
+    <tr class="staffHeader">
+      <th width="5%"></th>
+      <th width="27%">Name</th>
+      <th width="25%">Title</th>
+      <th width="10%" class="noWrap">Phone</th>
+      <th width="8%" class="noWrap">Room #</th>
+      <th width="25%">Email</th>
+    </tr>
+    <!--<ng-container >
+      <tr><td colspan="6"></tr>-->
+
+    <ng-container *ngFor="let dept of deptOutputResults;">
+
+      <tr class="deptHeader"><td colspan="6">{{dept.Title}}</td></tr>
+      <ng-container *ngFor="let staff of managersResults">
+        
+        <tr class="row manager"
+            *ngIf="dept.migaDepartmentCodes.includes(staff.migaDepartmentCode) && staff.migaEmail != null && staff.migaIsHidden==false && staff.migaTeamId == null && staff.migaHasNoImage==false">
+
+          <td width="5%" class="staffImage"><img class="imgStaff" src="http://zoom.worldbank.org/photo/people/{{ staff.Title }}.jpg" alt="{{ staff.migaStaffName.replace(',', ', ') }}" /></td>
+          <td width="27%" class="staffName" >
+            <a (click)="openSPPopup($event)" href="#">{{ staff.migaStaffName }}</a>
+          </td>
+          <td width="25%">{{ staff.migaJobTitle }}</td>
+          <td width="10%" class="noWrap">{{ staff.migaPhoneNumber }}</td>
+          <td width="8%" class="noWrap">{{ staff.migaRoomNumber }}</td>
+          <td width="25%" class="staffEmail"><a href="mailto:{{ staff.migaEmail }}">{{ staff.migaEmail }}</a></td>
+        </tr>
+
+        <tr class="row manager"
+            *ngIf="dept.migaDepartmentCodes.includes(staff.migaDepartmentCode) && staff.migaEmail != null && staff.migaIsHidden==false && staff.migaTeamId == null && staff.migaHasNoImage==true">
+          <td width="5%" class="staffImage">
+            <img class="imgStaff"
+                 src="https://worldbankgroup.sharepoint.com/sites/MIGANet/_layouts/images/person.gif" alt="{{ staff.migaStaffName.replace(',', ', ') }}" />
+          </td>
+          <td width="27%" class="staffName"><a (click)="openNewTabStaff($event)">{{ staff.migaStaffName }}</a></td>
+          <td width="25%">{{ staff.migaJobTitle }}</td>
+          <td width="10%" class="noWrap">{{ staff.migaPhoneNumber }}</td>
+          <td width="8%" class="noWrap">{{ staff.migaRoomNumber }}</td>
+          <td width="25%" class="staffEmail"><a href="mailto:{{ staff.migaEmail }}">{{ staff.migaEmail }}</a></td>
+        </tr>
+
+      </ng-container>
+      <ng-container *ngFor="let staff of assistantResults">
+        <tr class=""
+            *ngIf="dept.migaDepartmentCodes.includes(staff.migaDepartmentCode)  && staff.migaEmail != null && staff.migaIsHidden==false &&  staff.migaTeamId == null && staff.migaHasNoImage==false">
+          <td width="5%" class="staffImage"><img class="imgStaff" src="http://zoom.worldbank.org/photo/people/{{ staff.Title }}.jpg" alt="{{ staff.migaStaffName.replace(',', ', ') }}" /></td>
+          <td width="27%" class="staffName"><a (click)="openNewTabStaff($event)">{{ staff.migaStaffName }}</a></td>
+          <td width="25%">{{ staff.migaJobTitle }}</td>
+          <td width="10%" class="noWrap">{{ staff.migaPhoneNumber }}</td>
+          <td width="8%" class="noWrap">{{ staff.migaRoomNumber }}</td>
+          <td width="25%" class="staffEmail"><a href="mailto:{{ staff.migaEmail }}">{{ staff.migaEmail }}</a></td>
+        </tr>
+
+        <tr class=""
+            *ngIf="dept.migaDepartmentCodes.includes(staff.migaDepartmentCode)  && staff.migaEmail != null && staff.migaIsHidden==false &&  staff.migaTeamId == null && staff.migaHasNoImage==true">
+          <td width="5%" class="staffImage">
+            <img class="imgStaff"
+                 src="https://worldbankgroup.sharepoint.com/sites/MIGANet/_layouts/images/person.gif" alt="{{ staff.migaStaffName.replace(',', ', ') }}" />
+          </td>
+          <td width="27%" class="staffName"><a (click)="openNewTabStaff($event)">{{ staff.migaStaffName }}</a></td>
+          <td width="25%">{{ staff.migaJobTitle }}</td>
+          <td width="10%" class="noWrap">{{ staff.migaPhoneNumber }}</td>
+          <td width="8%" class="noWrap">{{ staff.migaRoomNumber }}</td>
+          <td width="25%" class="staffEmail"><a href="mailto:{{ staff.migaEmail }}">{{ staff.migaEmail }}</a></td>
+        </tr>
+      </ng-container>
+
+
+      <tr class="staffDivider">
+        <td colspan="6"></td>
+      </tr>
+
+      <ng-container *ngFor="let staff of othersResults_Sort">
+        <tr class=""
+            *ngIf="dept.migaDepartmentCodes.includes(staff.migaDepartmentCode)  &&  staff.migaEmail != null && staff.migaIsHidden==false &&  staff.migaPosition!='Manager Assistant' && staff.migaPosition!='Manager' && staff.migaTeamId == null && staff.migaHasNoImage==false">
+          <td width="5%" class="staffImage"><img class="imgStaff" src="http://zoom.worldbank.org/photo/people/{{ staff.Title }}.jpg" alt="{{ staff.migaStaffName.replace(',', ', ') }}" /></td>
+          <td width="27%" class="staffName"><a (click)="openNewTabStaff($event)">{{ staff.migaStaffName }}</a></td>
+          <td width="25%">{{ staff.migaJobTitle }}</td>
+          <td width="10%" class="noWrap">{{ staff.migaPhoneNumber }}</td>
+          <td width="8%" class="noWrap">{{ staff.migaRoomNumber }}</td>
+          <td width="25%" class="staffEmail"><a href="mailto:{{ staff.migaEmail }}">{{ staff.migaEmail }}</a></td>
+        <tr class=""
+            *ngIf="dept.migaDepartmentCodes.includes(staff.migaDepartmentCode)  &&  staff.migaEmail != null && staff.migaIsHidden==false &&  staff.migaPosition!='Manager Assistant' && staff.migaPosition!='Manager' && staff.migaTeamId == null && staff.migaHasNoImage==true">
+          <td width="5%" class="staffImage">
+            <img class="imgStaff"
+                 src="https://worldbankgroup.sharepoint.com/sites/MIGANet/_layouts/images/person.gif" alt="{{ staff.migaStaffName.replace(',', ', ') }}" />
+          </td>
+          <td width="27%" class="staffName"><a (click)="openNewTabStaff($event)">{{ staff.migaStaffName }}</a></td>
+          <td width="25%">{{ staff.migaJobTitle }}</td>
+          <td width="10%" class="noWrap">{{ staff.migaPhoneNumber }}</td>
+          <td width="8%" class="noWrap">{{ staff.migaRoomNumber }}</td>
+          <td width="25%" class="staffEmail"><a href="mailto:{{ staff.migaEmail }}">{{ staff.migaEmail }}</a></td>
+        </tr>
+      </ng-container>
+
+
+      <ng-container *ngFor="let team of teamOutputResults;">
+        <tr class="teamHeader" *ngIf="dept.migaDepartmentCodes.includes(team.migaDepartmentCode)"><td colspan="6"><h3>{{team.migaTeamTitle}}</h3></td></tr>
+
+
+        <ng-container *ngFor="let staff of managersResults;">
+          <tr class="row manager"
+              *ngIf="dept.migaDepartmentCodes.includes(team.migaDepartmentCode) && dept.migaDepartmentCodes.includes(staff.migaDepartmentCode) && team.migaTeamId==staff.migaTeamId && staff.migaEmail != null  && staff.migaIsHidden==false && staff.migaTeamId != null && staff.migaHasNoImage==false">
+
+            <td width="5%" class="staffImage"><img class="imgStaff" src="http://zoom.worldbank.org/photo/people/{{ staff.Title }}.jpg" alt="{{ staff.migaStaffName.replace(',', ', ') }}" /></td>
+            <td width="27%" class="staffName"><a (click)="openNewTabStaff($event)">{{ staff.migaStaffName }}</a></td>
+            <td width="25%">{{ staff.migaJobTitle }}</td>
+            <td width="10%" class="noWrap">{{ staff.migaPhoneNumber }}</td>
+            <td width="8%" class="noWrap">{{ staff.migaRoomNumber }}</td>
+            <td width="25%" class="staffEmail"><a href="mailto:{{ staff.migaEmail }}">{{ staff.migaEmail }}</a>></td>
+
+          </tr>
+          <tr class="row manager"
+              *ngIf="dept.migaDepartmentCodes.includes(team.migaDepartmentCode) && dept.migaDepartmentCodes.includes(staff.migaDepartmentCode) && team.migaTeamId==staff.migaTeamId && staff.migaEmail != null  && staff.migaIsHidden==false && staff.migaTeamId != null && staff.migaHasNoImage==true">
+
+            <td width="5%" class="staffImage">
+              <img class="imgStaff"
+                   src="https://worldbankgroup.sharepoint.com/sites/MIGANet/_layouts/images/person.gif" alt="{{ staff.migaStaffName.replace(',', ', ') }}" />
+            </td>
+            <td width="27%" class="staffName"><a (click)="openNewTabStaff($event)">{{ staff.migaStaffName }}</a></td>
+            <td width="25%">{{ staff.migaJobTitle }}</td>
+            <td width="10%" class="noWrap">{{ staff.migaPhoneNumber }}</td>
+            <td width="8%" class="noWrap">{{ staff.migaRoomNumber }}</td>
+            <td width="25%" class="staffEmail"><a href="mailto:{{ staff.migaEmail }}">{{ staff.migaEmail }}</a>></td>
+
+          </tr>
+        </ng-container>
+
+        <ng-container *ngFor="let staff of assistantResults;">
+          <tr class=""
+              *ngIf="dept.migaDepartmentCodes.includes(team.migaDepartmentCode) && dept.migaDepartmentCodes.includes(staff.migaDepartmentCode) && team.migaTeamId==staff.migaTeamId && staff.migaEmail != null && staff.migaIsHidden==false && staff.migaTeamId != null && staff.migaHasNoImage==false">
+
+            <td width="5%" class="staffImage"><img class="imgStaff" src="http://zoom.worldbank.org/photo/people/{{ staff.Title }}.jpg" alt="{{ staff.migaStaffName.replace(',', ', ') }}" /></td>
+            <td width="27%" class="staffName"><a (click)="openNewTabStaff($event)">{{ staff.migaStaffName }}</a></td>
+            <td width="25%">{{ staff.migaJobTitle }}</td>
+            <td width="10%" class="noWrap">{{ staff.migaPhoneNumber }}</td>
+            <td width="8%" class="noWrap">{{ staff.migaRoomNumber }}</td>
+            <td width="25%" class="staffEmail"><a href="mailto:{{ staff.migaEmail }}">{{ staff.migaEmail }}</a></td>
+
+          </tr>
+          <tr class=""
+              *ngIf="dept.migaDepartmentCodes.includes(team.migaDepartmentCode) && dept.migaDepartmentCodes.includes(staff.migaDepartmentCode) && team.migaTeamId==staff.migaTeamId && staff.migaEmail != null && staff.migaIsHidden==false && staff.migaTeamId != null && staff.migaHasNoImage==true">
+
+            <td width="5%" class="staffImage">
+              <img class="imgStaff" src="https://worldbankgroup.sharepoint.com/sites/MIGANet/_layouts/images/person.gif" alt="{{ staff.migaStaffName.replace(',', ', ') }}" />
+            </td>
+            <td width="27%" class="staffName"><a (click)="openNewTabStaff($event)">{{ staff.migaStaffName }}</a></td>
+            <td width="25%">{{ staff.migaJobTitle }}</td>
+            <td width="10%" class="noWrap">{{ staff.migaPhoneNumber }}</td>
+            <td width="8%" class="noWrap">{{ staff.migaRoomNumber }}</td>
+            <td width="25%" class="staffEmail"><a href="mailto:{{ staff.migaEmail }}">{{ staff.migaEmail }}</a></td>
+
+          </tr>
+
+        </ng-container>
+
+        <!--<tr class="staffDivider">
+       <td colspan="6"></td>
+  </tr>-->
+
+
+        <ng-container *ngFor="let staff of teamNullResults_Sort;">
+          <tr class=""
+              *ngIf="dept.migaDepartmentCodes.includes(team.migaDepartmentCode) && dept.migaDepartmentCodes.includes(staff.migaDepartmentCode) && team.migaTeamId==staff.migaTeamId && staff.migaEmail != null  && staff.migaIsHidden==false && (staff.migaPosition != 'Manager' && staff.migaPosition !='Manager Assistant') && staff.migaTeamId != null && staff.migaHasNoImage==false">
+
+            <td width="5%" class="staffImage"><img class="imgStaff" src="http://zoom.worldbank.org/photo/people/{{ staff.Title }}.jpg" alt="{{ staff.migaStaffName.replace(',', ', ') }}" /></td>
+            <td width="27%" class="staffName"><a (click)="openNewTabStaff($event)">{{ staff.migaStaffName }}</a></td>
+            <td width="25%">{{ staff.migaJobTitle }}</td>
+            <td width="10%" class="noWrap">{{ staff.migaPhoneNumber }}</td>
+            <td width="8%" class="noWrap">{{ staff.migaRoomNumber }}</td>
+            <td width="25%" class="staffEmail"><a href="mailto:{{ staff.migaEmail }}">{{ staff.migaEmail }}</a></td>
+
+          </tr>
+          <tr class=""
+              *ngIf="dept.migaDepartmentCodes.includes(team.migaDepartmentCode) && dept.migaDepartmentCodes.includes(staff.migaDepartmentCode) && team.migaTeamId==staff.migaTeamId && staff.migaEmail != null  && staff.migaIsHidden==false && (staff.migaPosition != 'Manager' && staff.migaPosition !='Manager Assistant') && staff.migaTeamId != null && staff.migaHasNoImage==true">
+
+            <td width="5%" class="staffImage">
+              <img class="imgStaff"
+                   src="https://worldbankgroup.sharepoint.com/sites/MIGANet/_layouts/images/person.gif" alt="{{ staff.migaStaffName.replace(',', ', ') }}" />
+            </td>
+            <td width="27%" class="staffName"><a (click)="openNewTabStaff($event)">{{ staff.migaStaffName }}</a></td>
+            <td width="25%">{{ staff.migaJobTitle }}</td>
+            <td width="10%" class="noWrap">{{ staff.migaPhoneNumber }}</td>
+            <td width="8%" class="noWrap">{{ staff.migaRoomNumber }}</td>
+            <td width="25%" class="staffEmail"><a href="mailto:{{ staff.migaEmail }}">{{ staff.migaEmail }}</a></td>
+
+          </tr>
+        </ng-container>
+        </ng-container>
+
+      <tr></tr>
+      <tr class="deptFooter">
+        <td colspan="3"></td>
+        <td><span class="deptFooterText">Mail Stop:</span></td>
+        <td><span class="deptFooterText2">{{ dept.migaDeptMailStopNumber }}</span></td>
+        <td><span class="deptFooterText">Fax:</span>{{ dept.migaFaxNumber }}</td>
+      </tr>
+    </ng-container>
+
+  <tbody>
+</table>
+

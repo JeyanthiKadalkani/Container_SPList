@@ -1,0 +1,123 @@
+h1 {
+  color: #369;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 250%;
+}
+
+.imgAlign {
+  position : absolute;
+  top : 50%;
+  left : 55%;
+}
+
+.imgStaff {
+  width: 28px;
+  height: 40px;
+}
+
+.noWrap {
+  white-space: nowrap;
+}
+
+.staffTitle {
+  font-size: large;
+  font-weight: bold;
+}
+
+table.staffDirectory {
+  width: 100%;
+  color: #222222;
+}
+
+  table.staffDirectory a, table.staffDirectory a:link, table.staffDirectory a:hover, table.staffDirectory a:active, table.staffDirectory a:focus, table.staffDirectory a:visited {
+    color: #003263;
+  }
+
+a.staffPrint:link {
+  color: #003263 !important;
+}
+
+table.staffDirectory, table.staffDirectory td {
+  border: 1px solid #EEEFE9;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.staffDirectory td.staffImage {
+  width: 28px;
+}
+
+.staffDirectory td.staffName {
+  font-weight: bold;
+}
+
+/*tr.staffHeader > th
+{
+    background-color: #EEEFE9;
+    color: #1B3403;
+    font-weight: bold;
+    text-align: left;
+    padding: 5px 0px;
+    font-size: 1.1em;
+}*/
+tr.deptHeader > td {
+  background-color: #4a6994;
+  color: #FFFFFF;
+  padding: 3px 0px;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-align: center;
+}
+
+tr.row.manager > td {
+  background-color: #e7efff;
+  border-left-color: #e7efff;
+  border-right-color: #e7efff;
+}
+
+tr.row.staffDivider > td {
+  border-top: 5px solid #EEEFE9;
+}
+
+tr.staffDivider > td{
+  border-top: 5px solid #EEEFE9;
+}
+
+tr.row.First > td {
+  border-top: 5px solid #EEEFE9;
+}
+
+tr.deptFooter > td {
+  background-color: #EEEFE9;
+}
+
+  tr.deptFooter > td .deptFooterText {
+    color: #636563;
+    font-weight: bold;
+  }
+
+  tr.deptFooter > td .deptFooterText2 {
+    color: #636563;
+  }
+
+tr.staffHeader > th, tr.teamHeader > td {
+  background-color: #EEEFE9; /*color: #1B3403;*/
+  color: #636563;
+  font-weight: bold;
+  padding-left: 2px;
+}
+
+
+.ms-dlgTitle {
+  background-color: #4a6994 !important;
+  border-bottom: 1px solid #4a6994 !important;
+}
+
+.ms-dlgBorder {
+  border: 1px solid #4a6994 !important;
+}
+
+.syncStaffTitles {
+  font-size: 1.1em;
+  font-weight: bold;
+}
